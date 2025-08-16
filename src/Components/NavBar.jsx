@@ -23,11 +23,11 @@ export default function NavBar() {
           </div>
 
           <div className="hidden md:flex items-center space-x-6">
-            <button className="_btn px-4 py-2 bg-orange-500 text-black w-24 font-bold rounded-lg transition">
+            <Link to={"/login"}><button className="_btn px-4 py-2 bg-orange-500 text-black w-24 font-bold rounded-lg transition">
               Log In
-            </button>
+            </button></Link>
             <div className="relative flex items-center">
-              <IoCartOutline className="text-2xl" />
+              <Link to={"/cart"}><IoCartOutline className="text-2xl" /></Link>
               <div className="absolute -top-2 -right-2 bg-red-500 text-white text-xs px-1 rounded-full">
                 0
               </div>
@@ -48,15 +48,16 @@ export default function NavBar() {
           <Link to="/male" className="block text-gray-700 hover:text-orange-500" onClick={() => setIsOpen(false)}>Male</Link>
           <Link to="/female" className="block text-gray-700 hover:text-orange-500" onClick={() => setIsOpen(false)}>Female</Link>
           <Link to="/kids" className="block text-gray-700 hover:text-orange-500" onClick={() => setIsOpen(false)}>Kids</Link>
-          <button className="w-full px-4 py-2 bg-orange-500 text-black rounded-lg transition font-bold">
-            Log In
-          </button>
-          <div className="flex items-center justify-center">
-            <IoCartOutline className="text-2xl" />
-            <div className="ml-1 bg-red-500 text-white text-xs px-1 rounded-full">
-              0
+          <Link to={"/login"}>
+            <button className="w-full px-4 py-2 bg-orange-500 text-black rounded-lg transition font-bold">Log In</button>
+          </Link>
+          <Link to={"/cart"}><div className="flex items-center justify-center">
+              <IoCartOutline className="text-2xl" />
+              <div className="ml-1 bg-red-500 text-white text-xs px-1 rounded-full">
+                0
+              </div>
             </div>
-          </div>
+          </Link>
         </div>
       )}
     </nav>
