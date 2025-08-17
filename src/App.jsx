@@ -1,37 +1,26 @@
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { Route, createBrowserRouter, createRoutesFromElements, RouterProvider } from 'react-router-dom';
 import Home from './Pages/Home';
 import ShopCategory from './Pages/ShopCategory';
 import Cart from './Pages/Cart';
 import Login from './Pages/Login';
-
-
-const router = createBrowserRouter([
-  { 
-    path: '/', 
-    element: <Home /> 
-  },
-  { 
-    path: '/female', 
-    element: <ShopCategory category="female" /> 
-  },
-  { 
-    path: '/kids', 
-    element: <ShopCategory category="kids" /> 
-  },
-  { 
-    path: '/male', 
-    element: <ShopCategory category="male" /> 
-  },{
-    path: '/cart',
-    element: <Cart />
-  },{
-    path: '/login',
-    element: <Login />
-  }
-]);
+import RootLayout from './layout/RootLayout';
 
 function App() {
-  return <RouterProvider router={router} />;
+  const router = createBrowserRouter(
+    createRoutesFromElements(
+        <Route path="/" element={<RootLayout/>}>
+          <Route index element={<Home />} />
+          <Route path="/female" element={<ShopCategory category="female" />} />
+          <Route path="/kids" element={<ShopCategory category="kids" />} />
+          <Route path="/male" element={<ShopCategory category="male" />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/login" element={<Login />} />
+        </Route>
+    )
+  )
+  return (
+    <RouterProvider router={router} />
+  );
 }
 
 export default App;

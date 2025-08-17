@@ -1,13 +1,12 @@
-import React,{createContext} from "react";
-import all_product from "../assets/all_product"
+import React,{createContext, useState} from "react";
 
 export const ProductContext = createContext(null);
 
-const ProductProvider = (props) =>{
-    const contextValue = {all_product}
+const ProductProvider = ({ children }) =>{
+    const [products, setProducts] = useState([]);
     return (
-        <ProductContext.Provider value={contextValue}>
-            {props.children}
+        <ProductContext.Provider value={{ products, setProducts }}>
+            {children}
         </ProductContext.Provider>
     )
 }
