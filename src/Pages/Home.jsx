@@ -1,5 +1,4 @@
 import BodyContent from '../Components/BodyContent'
-import NavBar from '../Components/NavBar'
 
 function Home() {
   return (

@@ -1,6 +1,5 @@
 import React,{useContext, useEffect} from 'react'
 import { ProductContext } from '../Context/ProductContext'; 
-import NavBar from '../Components/NavBar';
 import all_product from '../assets/all_product';
 import Item from '../Components/Item';
 
