@@ -1,7 +1,9 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
-function Item({ image, name, new_price, old_price }) {
+function Item({ id, image, name, new_price, old_price }) {
   return (
+    <Link to = {`/product/${id}`}>
     <div className="bg-white shadow-md rounded-2xl p-5 hover:shadow-2xl transition duration-300 w-64 text-center">
       <img
         src={image}
@@ -18,6 +20,7 @@ function Item({ image, name, new_price, old_price }) {
         </div>
       </div>
     </div>
+    </Link>
   );
 }
 
