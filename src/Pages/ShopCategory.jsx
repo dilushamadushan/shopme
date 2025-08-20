@@ -10,7 +10,11 @@ function ShopCategory(props) {
         setProducts(all_product);
     }, []);
 
-    const Products = all_product.map((prd, idx) => prd.category === props.category && (<Item key={idx} {...prd} />))
+    const Products = all_product.map(
+                    (prd, idx) => 
+                        prd.category === props.category && (
+                        <Item key={idx} {...prd} />
+                    ));
   return (
         <div className="flex flex-wrap justify-center gap-6 p-6">
             {Products}
