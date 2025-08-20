@@ -1,8 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import starIcone from "../assets/star_icon.png";
 import starDullIcone from "../assets/star_dull_icon.png";
+import { ProductContext } from "../Context/ProductContext";
 
 function ProductContent({ product }) {
+
+  const { addToCart } = useContext(ProductContext);
+
   if (!product) {
     return <div className="text-center py-10 text-gray-500">Loading...</div>;
   }
@@ -53,9 +57,11 @@ function ProductContent({ product }) {
         </div>
 
         <p className="text-sm md:text-base text-gray-600 leading-relaxed">
-          Add some description here about the product. Highlight its quality,
-          fabric, and unique style to attract customers.
+            A stylish and comfortable piece crafted from premium fabric. Designed for
+            everyday wear, it combines durability with a modern fit, making it a
+            must-have addition to your wardrobe.
         </p>
+
 
         <div>
           <h2 className="text-lg font-semibold mb-2">Select Size</h2>
@@ -71,7 +77,9 @@ function ProductContent({ product }) {
           </div>
         </div>
 
-        <button className="w-full md:w-1/2 bg-green-500 text-white py-3 rounded-lg font-semibold hover:bg-green-600 transition">
+        <button 
+          onClick={() => addToCart(product.id)} 
+          className="w-full md:w-1/2 bg-green-500 text-white py-3 rounded-lg font-semibold hover:bg-green-600 transition">
           ADD TO CART
         </button>
 

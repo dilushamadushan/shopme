@@ -4,20 +4,16 @@ import all_product from '../assets/all_product';
 import Item from '../Components/Item';
 
 function ShopCategory(props) {
-    const { products, setProducts } = useContext(ProductContext);
+    const { products } = useContext(ProductContext);
 
-    useEffect(() => {
-        setProducts(all_product);
-    }, []);
-
-    const Products = all_product.map(
+    const filterProducts = products.map(
                     (prd, idx) => 
                         prd.category === props.category && (
                         <Item key={idx} {...prd} />
                     ));
   return (
         <div className="flex flex-wrap justify-center gap-6 p-6">
-            {Products}
+            {filterProducts}
         </div>
     )
 }
