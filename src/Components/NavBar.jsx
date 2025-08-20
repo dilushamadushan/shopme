@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState , useContext } from 'react';
 import { IoCartOutline } from "react-icons/io5";
 import { HiMenu, HiX } from "react-icons/hi";
 import { Link } from 'react-router-dom';
+import { ProductContext } from '../Context/ProductContext';
 
 export default function NavBar() {
   const [isOpen, setIsOpen] = useState(false);
+  const {getTotalCartItems} = useContext(ProductContext);
 
   return (
     <nav className="shadow-md w-full z-10">
@@ -29,7 +31,7 @@ export default function NavBar() {
             <div className="relative flex items-center">
               <Link to={"/cart"}><IoCartOutline className="text-2xl" /></Link>
               <div className="absolute -top-2 -right-2 bg-red-500 text-white text-xs px-1 rounded-full">
-                0
+                {getTotalCartItems()}
               </div>
             </div>
           </div>
@@ -54,7 +56,7 @@ export default function NavBar() {
           <Link to={"/cart"}><div className="flex items-center justify-center">
               <IoCartOutline className="text-2xl" />
               <div className="ml-1 bg-red-500 text-white text-xs px-1 rounded-full">
-                0
+                {getTotalCartItems()}
               </div>
             </div>
           </Link>

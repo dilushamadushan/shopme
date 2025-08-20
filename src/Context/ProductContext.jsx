@@ -24,8 +24,29 @@ const ProductProvider = ({ children }) =>{
         setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] - 1 }));
     }
 
+    const getTotalCartAmount = () => {
+        let totalAmount = 0;
+        for(const item in cartItems){
+            if(cartItems[item] > 0){
+                let itemInfo = products.find((product) => product.id === Number(item));
+                totalAmount += itemInfo.new_price * cartItems[item];
+            }
+        } 
+        return totalAmount;
+    }
+
+    const getTotalCartItems = () => {
+        let totalItems = 0;
+        for(const item in cartItems){
+            if(cartItems[item] > 0){
+            totalItems += cartItems[item];
+            }
+        }
+        return totalItems;
+    }
+
     return (
-        <ProductContext.Provider value={{ products, setProducts, cartItems, addToCart, removeFromCart }}>
+        <ProductContext.Provider value={{ products, setProducts, cartItems, addToCart, removeFromCart, getTotalCartAmount, getTotalCartItems }}>
             {children}
         </ProductContext.Provider>
     )
