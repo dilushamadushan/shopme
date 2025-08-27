@@ -1,4 +1,6 @@
-const port = 3000;
+require('dotenv').config();
+
+const port = process.env.PORT;
 
 const express = require('express');
 const app = express();
@@ -107,7 +109,7 @@ app.get("/allproduct", async (req, res) => {
   res.json(products);
 })
 
-mongoose.connect("");
+mongoose.connect(`${process.env.MONGO_URL}`);
 
 app.listen(port, (error) => {
     if(!error){
