@@ -34,9 +34,9 @@ export default function SideBar() {
 
       {/* Middle Section - Menu Items */}
       <div className="flex-1 overflow-y-auto px-2 sm:px-6 space-y-2 text-gray-700 mt-4">
-        <MenuItem to="/dash" icon={<FaHome />} label="Dashboard" />
-        <MenuItem to="/add" icon={<GiKnifeFork />} label="Add Product" />
-        <MenuItem to="/all" icon={<MdPointOfSale />} label="All Products" />
+        <MenuItem to="./" icon={<FaHome />} label="Dashboard" />
+        <MenuItem to="./add" icon={<GiKnifeFork />} label="Add Product" />
+        <MenuItem to="./all" icon={<MdPointOfSale />} label="All Products" />
       </div>
 
       {/* Bottom Section - Logout */}
