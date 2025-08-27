@@ -107,7 +107,7 @@ app.get("/allproduct", async (req, res) => {
   res.json(products);
 })
 
-mongoose.connect("mongodb+srv://dilushamadushan:DMdm.851905@cluster0.fgesmgm.mongodb.net/e-com");
+mongoose.connect("");
 
 app.listen(port, (error) => {
     if(!error){
