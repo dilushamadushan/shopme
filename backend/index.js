@@ -36,7 +36,7 @@ app.post("/upload", upload.single("product"), (req, res) => {
 
   res.json({
     success: 1,
-    imgUrl: `http://localhost:${port}/upload/${req.file.filename}`,
+    image: `http://localhost:${port}/upload/${req.file.filename}`,
   });
 });
 
@@ -57,10 +57,10 @@ const Product = mongoose.model("product", {
     type : String,
     required : true,
   },
-  new_prices : {
+  new_price : {
     type : Number,
     required : true,
-  },old_prices : {
+  },old_price : {
     type : Number,
     required : true,
   },
@@ -75,28 +75,28 @@ const Product = mongoose.model("product", {
 })
 
 app.post("/addproduct", async (req, res) => {
-  let products  = await Product.find({});
-  let id;
-  if(products.length > 0){
-    let last_product_array = products.slice(-1);
-    let last_product = last_product_array[0];
-    id = last_product.id + 1;
-  }else{
-    id = 1;
+  try {
+    let products = await Product.find({});
+    let id = products.length > 0 ? products[products.length - 1].id + 1 : 1;
+
+    const product = new Product({
+      id,
+      name: req.body.name,
+      image: req.body.image,
+      category: req.body.category,
+      new_price: req.body.new_price,
+      old_price: req.body.old_price,
+      available: req.body.available ?? true,
+    });
+
+    await product.save();
+    res.json({ success: true, message: "Product added successfully" });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ success: false, message: "Server error" });
   }
-  const product = new Product({
-    id: id,
-    name: req.body.name,
-    image: req.body.image,
-    category: req.body.category,
-    new_prices: req.body.new_prices,
-    old_prices: req.body.old_prices,
-    available: req.body.available,
-  });
-  console.log(product);
-  await product.save();
-  res.json({ message: "Product added successfully" });
-})
+});
+
 
 app.delete("/removeproduct/:id", async (req, res) => {
   const id = req.params.id;
