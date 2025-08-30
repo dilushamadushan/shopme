@@ -73,11 +73,10 @@ const handleSubmit = async (e) => {
 
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-100 px-4">
+    <>
+    <h2 className="text-2xl font-bold mb-6 text-gray-800">Add Products</h2>
+    <div className="flex p-4 bg-gray-100 px-4">
       <div className="bg-white shadow-xl rounded-2xl w-full max-w-lg p-8">
-        <h1 className="text-2xl font-semibold text-gray-800 mb-6 text-center">
-          Add New Product
-        </h1>
 
         <form onSubmit={handleSubmit} className="space-y-5">
           {/* Product Name */}
@@ -165,6 +164,32 @@ const handleSubmit = async (e) => {
           </button>
         </form>
       </div>
+     <div className="ml-8 p-6 bg-white shadow-lg rounded-xl w-72">
+      <h3 className="text-lg font-semibold text-gray-800 mb-3">Preview</h3>
+  
+      {img && (
+        <img
+          src={URL.createObjectURL(img)}
+          alt="Preview"
+          className="w-full h object-cover rounded-lg mb-3"
+      />
+      )}
+
+      <p className="text-gray-700 mt-2 text-center">
+        <span className="font-medium">Name:</span> {formData.name || "—"}
+      </p>
+      <p className="text-gray-700 mt-2 text-center">
+        <span className="font-medium">Category:</span> {formData.category || "—"}
+      </p>
+      <p className="text-gray-700 mt-2 text-center">
+        <span className="font-medium">New Price:</span> {formData.new_price || "—"}
+      </p>
+      <p className="text-gray-700 mt-2 text-center">
+        <span className="font-medium">Old Price:</span> {formData.old_price || "—"}
+      </p>
     </div>
+ 
+    </div>
+    </>
   );
 }

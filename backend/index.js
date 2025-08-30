@@ -109,6 +109,73 @@ app.get("/allproduct", async (req, res) => {
   res.json(products);
 })
 
+const Users = mongoose.model('Users', {
+  name : {
+    type : String,
+  },
+  email : {
+    type : String,
+    unique : true,
+  },
+  password : {
+    type : String,
+  },
+  date : {
+    type: Date,
+    default : Date.now,
+  }
+})
+
+app.post('/auth', async (req, res) => {
+  let check = await Users.findOne({email:req.body.email});
+  if(check){
+    return res.status(400).json({success:false, errors : "Existing users found"})
+  }
+  let cart = {};
+  for(let i = 0 ; i < 300; i++){
+    cart[i] = 0;
+  }
+  const user = new Users({
+    name : req.body.name,
+    email : req.body.email,
+    password : req.body.password,
+    cartData : cart,
+  })
+
+  await user.save();
+
+  const data = {
+    user : {
+      id : user.id
+    }
+  }
+  const token = jwt.sign(data, 'secret_ecom');
+  res.json({success : true, token})
+})
+
+app.post('/login', async (req,res) => {
+  let user = await Users.findOne({email : req.body.email});
+  if(user){
+    const passConf = req.body.password === user.password;
+    if(passConf){
+      const data = {
+        user : {
+          id : user.id
+        }
+      }
+      const token = jwt.sign(data, 'secret_ecom');
+      res.json({success : true, token})
+    }
+    else{
+      res.json({success:false,errors : "Wrong Password"});
+    }
+  }
+  else{
+    res.json({success:false,errors : "Wrong email Id"})
+  }
+})
+
+
 mongoose.connect(`${process.env.MONGO_URL}`);
 
 app.listen(port, (error) => {
