@@ -30,7 +30,7 @@ export default function NavBar() {
                 <button 
                   className="_btn px-4 py-2 bg-green-500 text-black w-24 font-bold rounded-lg transition" 
                   onClick={() => {
-                    localStorage.removeItem('auth-token');window.location.replace('/')
+                    localStorage.removeItem('auth-token');window.location.replace('/login')
                   }}>Log Out</button> :
             <Link to={"/login"}><button className="_btn px-4 py-2 bg-green-500 text-black w-24 font-bold rounded-lg transition">
               Log In
@@ -62,7 +62,7 @@ export default function NavBar() {
                 <button 
                   className="_btn px-4 py-2 bg-green-500 text-black w-24 font-bold rounded-lg transition" 
                   onClick={() => {
-                      localStorage.removeItem('auth-token');window.location.replace('/')
+                      localStorage.removeItem('auth-token');window.location.replace('/login')
                     }}>Log Out</button> :
           <Link to={"/login"}>
             <button className="w-full px-4 py-2 bg-green-500 text-black rounded-lg transition font-bold">Log In</button>
