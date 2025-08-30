@@ -63,6 +63,7 @@ const handleSubmit = async (e) => {
 
     const addJson = await addRes.json();
     addJson.success ? alert("Product added") : alert("Failed to add product");
+    window.location.reload();
   } catch (error) {
     console.error(error);
     alert("An error occurred. Check console.");
