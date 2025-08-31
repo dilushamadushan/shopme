@@ -4,7 +4,6 @@ import ShopCategory from './Pages/ShopCategory';
 import Cart from './Pages/Cart';
 import Login from './Pages/Login';
 import RootLayout from './layout/RootLayout';
-import Register from './Pages/Register';
 import Product from './Pages/Product';
 
 function App() {
@@ -20,7 +19,6 @@ function App() {
           </Route>
           <Route path="/cart" element={<Cart />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/register" element = {<Register />} />
         </Route>
     )
   )

@@ -1,4 +1,4 @@
-import React, { useState , useContext } from 'react';
+import { useState , useContext } from 'react';
 import { IoCartOutline } from "react-icons/io5";
 import { HiMenu, HiX } from "react-icons/hi";
 import { Link } from 'react-router-dom';
@@ -25,9 +25,16 @@ export default function NavBar() {
           </div>
 
           <div className="hidden md:flex items-center space-x-6">
+            {
+              localStorage.getItem('auth-token') ? 
+                <button 
+                  className="_btn px-4 py-2 bg-green-500 text-black w-24 font-bold rounded-lg transition" 
+                  onClick={() => {
+                    localStorage.removeItem('auth-token');window.location.replace('/login')
+                  }}>Log Out</button> :
             <Link to={"/login"}><button className="_btn px-4 py-2 bg-green-500 text-black w-24 font-bold rounded-lg transition">
               Log In
-            </button></Link>
+            </button></Link>}
             <div className="relative flex items-center">
               <Link to={"/cart"}><IoCartOutline className="text-2xl" /></Link>
               <div className="absolute -top-2 -right-2 bg-red-500 text-white text-xs px-1 rounded-full">
@@ -50,9 +57,16 @@ export default function NavBar() {
           <Link to="/male" className="block text-gray-700 hover:text-green-500" onClick={() => setIsOpen(false)}>Male</Link>
           <Link to="/female" className="block text-gray-700 hover:text-green-500" onClick={() => setIsOpen(false)}>Female</Link>
           <Link to="/kids" className="block text-gray-700 hover:text-green-500" onClick={() => setIsOpen(false)}>Kids</Link>
+          {
+              localStorage.getItem('auth-token') ? 
+                <button 
+                  className="_btn px-4 py-2 bg-green-500 text-black w-24 font-bold rounded-lg transition" 
+                  onClick={() => {
+                      localStorage.removeItem('auth-token');window.location.replace('/login')
+                    }}>Log Out</button> :
           <Link to={"/login"}>
             <button className="w-full px-4 py-2 bg-green-500 text-black rounded-lg transition font-bold">Log In</button>
-          </Link>
+          </Link>}
           <Link to={"/cart"}><div className="flex items-center justify-center">
               <IoCartOutline className="text-2xl" />
               <div className="ml-1 bg-red-500 text-white text-xs px-1 rounded-full">
