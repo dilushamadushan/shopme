@@ -28,11 +28,11 @@ export default function NavBar() {
             {
               localStorage.getItem('auth-token') ? 
                 <button 
-                  className="_btn px-4 py-2 bg-green-500 text-black w-24 font-bold rounded-lg transition" 
+                  className="bg-green-500 text-white px-5 py-2 rounded-lg font-semibold hover:bg-green-600 transition" 
                   onClick={() => {
                     localStorage.removeItem('auth-token');window.location.replace('/login')
                   }}>Log Out</button> :
-            <Link to={"/login"}><button className="_btn px-4 py-2 bg-green-500 text-black w-24 font-bold rounded-lg transition">
+            <Link to={"/login"}><button className="bg-green-500 text-white px-5 py-2 rounded-lg font-semibold hover:bg-green-600 transition">
               Log In
             </button></Link>}
             <div className="relative flex items-center">
@@ -60,12 +60,12 @@ export default function NavBar() {
           {
               localStorage.getItem('auth-token') ? 
                 <button 
-                  className="_btn px-4 py-2 bg-green-500 text-black w-24 font-bold rounded-lg transition" 
+                  className="bg-green-500 text-white px-5 py-2 rounded-lg font-semibold hover:bg-green-600 transition" 
                   onClick={() => {
                       localStorage.removeItem('auth-token');window.location.replace('/login')
                     }}>Log Out</button> :
           <Link to={"/login"}>
-            <button className="w-full px-4 py-2 bg-green-500 text-black rounded-lg transition font-bold">Log In</button>
+            <button className="bg-green-500 text-white px-5 py-2 rounded-lg font-semibold hover:bg-green-600 transition">Log In</button>
           </Link>}
           <Link to={"/cart"}><div className="flex items-center justify-center">
               <IoCartOutline className="text-2xl" />
