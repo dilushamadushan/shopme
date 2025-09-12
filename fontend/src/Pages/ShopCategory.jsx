@@ -15,7 +15,7 @@ function ShopCategory(props) {
   return (
     <>
     <Banner />
-        <div className="flex flex-wrap justify-center gap-6 p-6">
+        <div className="flex flex-wrap justify-center gap-6 ml-20 mr-30 p-6">
             {filterProducts}
         </div>
     </>
